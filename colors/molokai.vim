@@ -141,8 +141,9 @@ if &t_Co > 255
       hi CursorLineNr ctermfg=208               cterm=none
    else
       hi Normal       ctermfg=252 ctermbg=233
-      hi CursorLine               ctermbg=234   cterm=none
+      hi CursorLine               ctermbg=236   cterm=none
       hi CursorLineNr ctermfg=208               cterm=none
+"      hi CursorLine   guibg=#2d2d2d ctermbg=233
    endif
    hi Boolean         ctermfg=135
    hi Character       ctermfg=144
