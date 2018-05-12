@@ -1,6 +1,6 @@
-"Colors
 "To enable 256 colors in vim 
 set t_Co=256
+
 "Set colorscheme
 " mustang"
 " colorscheme mustang
@@ -15,8 +15,7 @@ inoremap jk <esc>
 vnoremap .  :norm.<CR>
 " Strip all trailing whitespaces in the file
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-" Toggle spelling visuals with <leader>s
-nnoremap <leader>s :set spell!<CR>
+
 
 "Add this line for Pathogen
 call pathogen#infect()
@@ -24,6 +23,7 @@ call pathogen#infect()
 syntax on
 filetype plugin indent on
 
+set nocompatible
 
 "Modifying tabs
 " show existing tab with 4 spaces width
@@ -33,11 +33,6 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab 
 
-"fold 
-au BufWinLeave *.* mkview
-au BufWinenter *.* silent  loadview
-au BufWinLeave .* mkview
-au BufWinenter .* silent  loadview
 
 "From coming-home-to-vim#important-vimrc-lines
 " Making vim sane
@@ -48,15 +43,16 @@ set backspace=indent,eol,start
 set showmode
 set showcmd
 set showmatch "match brackets
-set matchtime=2
+set matchtime=3
 set hidden
 set wildmenu
 set wildmode=list:longest
 set cursorline
 set relativenumber
 set number
-set nocompatible
-
+" Open new panes right and below
+set splitright 
+set splitbelow
 " Searching/moving
 set ignorecase
 set smartcase
@@ -65,13 +61,11 @@ set hlsearch
 nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
-
-"Wrap
 " Let vim handle long lines correctly
 set wrap
-set textwidth=72
+set textwidth=100
 set formatoptions=cqt
-set colorcolumn=72
+set colorcolumn=90
 
 "Set status line 
 set laststatus=2
@@ -80,11 +74,8 @@ set statusline+=\ %P        "percent through file
 set statusline+=%=          "left/right separator
 set statusline+=%c,%l/%L    "cursor col,cursor line/total lines
 set statusline+=%y          "file type
-
-"Jedi Settings 
-" Disable auto-initialization of Jedi 
-" let g:jedi#auto_initialization = 0
-let g:jedi#use_splits_not_buffers = "right"
+set statusline+=%f          "add full file path
+"Jedi 
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_definitions_command = ""
@@ -92,5 +83,7 @@ let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
-let g:jedi#show_call_signatures = "0"
+let g:pymode_rope = 0
+"let g:jedi#completions_enabled = 0
+
 autocmd FileType python setlocal completeopt-=preview
